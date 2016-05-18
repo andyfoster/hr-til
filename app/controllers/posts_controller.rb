@@ -29,7 +29,7 @@ class PostsController < ApplicationController
   def show
     if valid_url?
       respond_to do |format|
-        format.md { render text: @post.body }
+        format.md { render text: raw_presenter(@post) }
         format.html
       end
     else
@@ -133,5 +133,14 @@ class PostsController < ApplicationController
 
   def display_name(post)
     post.published? ? 'Post ' : 'Draft '
+  end
+
+  def raw_presenter(post)
+    title = post.title
+    body = post.body
+    author = post.developer_username
+    date = post.display_date.strftime("%B %-e, %Y")
+
+    title + "\n\n" + body + "\n\n" + author + "\n" + date
   end
 end

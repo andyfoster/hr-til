@@ -1,3 +1,7 @@
+* Include author, title, date in markdown response.
+
+  *Jake Worth*
+
 * Narrow scope of Slack HTML escaping.
 
   *Jake Worth*
